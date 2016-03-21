@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>ILinkNY</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <meta name="google-signin-client_id" content="951686003319-ns8di9o824hqdu0os5udu546e8b5gk10.apps.googleusercontent.com">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+    
+<body>
+
+<input value="show" type="button" onclick="show();" />
+<input value="save" type="button" onclick="preserve();" />
+
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div id="map" class="mainmap" style="width:1000px; height:600px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+	                
+
+
+
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEwZC-6NgDwCKEqTqn_x7Bs-JEYD9gg0g&signed_in=true&libraries=places&callback=initMap" async defer></script>
+    <script>
+
+///////////////////////////
+//////GLOBAL VARIABLE//////
+///////////////////////////
+var map;
+var infowindow;
+var mapObject = new Object(); //store Map Object
+var service; //for places search
+var currentLocation; //for current location
+//var searchLoop = ['museum','restaurant','art_gallery', 'park', 'bar', 'night_club', 'amusement_park']; //lists of category
+var searchLoop = ['park', 'restaurant']; //lists of category
+var markers = [];
+
+var preserve_park = {};
+var preserve_restaurant = {};
+
+var current_i = 0;
+
+function show() {
+  alert("park:" + Object.keys(preserve_park).length + ", restaurant:" + Object.keys(preserve_restaurant).length);
+  console.log(preserve_park);
+  console.log(preserve_restaurant);
+}
+
+function preserve() {
+  var json_preserve_park = JSON.stringify( preserve_park ) ;
+  var json_preserve_restaurant = JSON.stringify( preserve_restaurant ) ; 
+
+  var data = {
+    "json_preserve_park": json_preserve_park,
+    "json_preserve_restaurant": json_preserve_restaurant
+  };
+  data = $(this).serialize() + "&" + $.param(data);
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "testExcelWrite.php",
+    data: data
+  }).done(function(data) {
+	alert("OK");
+        console.log(data);
+  }).fail(function(data) {
+	alert("Error getting location and event information");
+        console.log(data);
+  }).always(function() {
+  });
+
+}
+
+////////////////////
+//////FUNCTION//////
+////////////////////
+function initMap() {
+  // near EmpireStateBuilding
+  currentLocation = {lat:40.747354, lng: -73.986783};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: currentLocation,
+    zoom: 16
+  });
+
+  //Initializing InfoWindow
+  infowindow = new google.maps.InfoWindow();
+
+  //Initializing PlacesService
+  service = new google.maps.places.PlacesService(map);
+  //Serching the location
+  searchLocation();
+
+  //Initializing the flag that we will check whether drag operation was done or not
+  map.dragWorking = false;
+  map.dragSearchLoopCount = 0;
+  google.maps.event.addListener(map, 'dragend', function() { 
+    if(map.dragWorking == false && map.dragSearchLoopCount == 0){
+      map.dragWorking = true;
+      currentLocation = {lat:map.getCenter().lat(), lng:map.getCenter().lng()}
+      searchLocation();
+    }
+  });
+}
+
+
+// Adding dom at category list
+function addCategory(category){
+ if (mapObject[category['place_id']] == null) {
+  var tmp = '<li><a href="#" onclick="openPopUp(\'' + category['place_id'] + '\')">' + category['name'] + '</a> </li>';
+
+  // Checking whether category.types is included in searchLoop
+  if($.inArray(category.types[0], searchLoop) >= 0){
+    $("#" + category.types[0]).append(tmp);
+  } else {
+    $("#other").append(tmp);
+  }
+ } 
+}
+
+// Searching near locations
+function searchLocation() {
+  //initializing markers
+  markers = []
+
+  //initializing mapObject
+  mapObject = new Object();
+
+
+  //searching each location
+  //for (var i = 0; i<searchLoop.length; i++) {
+    service.nearbySearch({
+	location: currentLocation,
+	radius: 500, 
+	types: [searchLoop[0]]
+        }, function(results, status) {
+          if (!results) return;
+          for (var k=0; k<results.length; k++) {
+            if( !(results[k]['place_id'] in preserve_park) ) {
+              var id = results[k]['place_id'];
+              preserve_park[id] = {};
+              preserve_park[id]['id'] = results[k]['id'];
+              preserve_park[id]['place_id'] = results[k]['place_id'];
+              preserve_park[id]['name'] = results[k]['name'];
+              preserve_park[id]['vicinity'] = results[k]['vicinity'];
+              preserve_park[id]['lat'] = results[k].geometry.location.lat();
+              preserve_park[id]['lng'] = results[k].geometry.location.lng();
+            }
+          }
+
+          map.dragSearchLoopCount = map.dragSearchLoopCount + 1;
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var j = 0; j < results.length; j++) {
+              createMarker(results[j]);
+            }
+          }
+          if (map.dragSearchLoopCount == searchLoop.length) {
+            map.dragSearchLoopCount = 0;
+            map.dragWorking = false;
+          }
+       } //end of function
+    ); //end of service.nearbySearch
+
+    service.nearbySearch({
+	location: currentLocation,
+	radius: 500, 
+	types: [searchLoop[1]]
+        }, function(results, status) {
+          if (!results) return;
+          for (var k=0; k<results.length; k++) {
+            if( !(results[k]['place_id'] in preserve_restaurant) ) {
+              var id = results[k]['place_id'];
+              preserve_restaurant[id] = {};
+              preserve_restaurant[id]['id'] = results[k]['id'];
+              preserve_restaurant[id]['place_id'] = results[k]['place_id'];
+              preserve_restaurant[id]['name'] = results[k]['name'];
+              preserve_restaurant[id]['vicinity'] = results[k]['vicinity'];
+              preserve_restaurant[id]['lat'] = results[k].geometry.location.lat();
+              preserve_restaurant[id]['lng'] = results[k].geometry.location.lng();
+            }
+          }
+
+          map.dragSearchLoopCount = map.dragSearchLoopCount + 1;
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var j = 0; j < results.length; j++) {
+              createMarker(results[j]);
+            }
+          }
+          if (map.dragSearchLoopCount == searchLoop.length) {
+            map.dragSearchLoopCount = 0;
+            map.dragWorking = false;
+          }
+       } //end of function
+    ); //end of service.nearbySearch
+
+
+  //} //end of for loop
+}
+
+
+function createMarker(place) {
+
+  //Setting value at category DOM
+  addCategory(place);
+
+  //Storing data related to map at global variables
+  mapObject[place.place_id] = new Object();
+  mapObject[place.place_id]['lat'] = place.geometry.location.lat();
+  mapObject[place.place_id]['lng'] = place.geometry.location.lng();
+  mapObject[place.place_id]['id'] = place.id;
+  mapObject[place.place_id]['name'] = place.name;
+  mapObject[place.place_id]['place_id'] = place.place_id;
+  mapObject[place.place_id]['price_level'] = place.price_level;
+  mapObject[place.place_id]['rating'] = place.rating;
+  mapObject[place.place_id]['reference'] = place.reference;
+  mapObject[place.place_id]['types'] = place.types[0];
+  mapObject[place.place_id]['vicinity'] = place.vicinity;
+  if (place.photos != null && place.photos !== undefined) {
+    mapObject[place.place_id]['photos'] = place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 200});
+  }
+  
+  //Adding markers
+  var type = mapObject[place.place_id]['types'];
+  var icon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+  if (type == "restaurant") {
+    icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+  } else if(type == "museum") {
+    icon = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+  } else if(type == "art_gallery") {
+    icon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+  } else if(type == "park") {
+    icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+  } else if(type == "bar") {
+    icon = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png";
+  }
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+    icon: icon
+  });
+  markers.push(marker);
+  
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+    </script>
+
+
+</html>
