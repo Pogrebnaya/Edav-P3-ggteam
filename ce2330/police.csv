@@ -5,7 +5,7 @@ Name,Address,State,Full Address,"Lat, Lng",lat, lng
 7th Precinct ,19 1/2 Pitt Street,NY,"19 1/2 Pitt Street,NY","40.7162871, -73.9837703",40.7162871,-73.9837703
 9th Precinct ,321 East 5 Street,NY,"321 East 5 Street,NY","40.7265384,-73.98782",40.7265384,-73.98782
 10th Precinct ,230 West 20th Street,NY,"230 West 20th Street,NY","40.7426975, -73.9986493454647",40.7426975,-73.99864935
-13th Precinct ,230 East 21st Street,NY,"230 East 21st Street,NY","42.7311898, -73.7019695",42.7311898,-73.7019695
+13th Precinct ,230 East 21st Street,NY,"230 East 21st Street,NY","40.7367396, -73.9827007",40.7367396,-73.9827007
 Midtown So. Pct.,357 West 35th Street ,NY,"357 West 35th Street ,NY","40.7538182, -73.9949851",40.7538182,-73.9949851
 17th Precinct ,167 East 51st Street,NY,"167 East 51st Street,NY","40.7567621, -73.9707859",40.7567621,-73.9707859
 Midtown No. Pct.,306 West 54th Street,NY,"306 West 54th Street,NY","40.7649371, -73.9850825",40.7649371,-73.9850825
@@ -28,7 +28,7 @@ Central Park Pct,86th St & Transverse Road ,NY,"86th St & Transverse Road ,NY","
 44th Precinct ,2 East 169th Street,NY,"2 East 169th Street,NY","40.8376206, -73.9195052",40.8376206,-73.9195052
 45th Precinct ,2877 Barkley Avenue,NY,"2877 Barkley Avenue,NY","40.8308431, -73.8273227133893",40.8308431,-73.82732271
 46th Precinct ,2120 Ryer Avenue,NY,"2120 Ryer Avenue,NY","40.8540266, -73.9001012886186",40.8540266,-73.90010129
-47th Precinct ,4111 Laconia Avenue,NY,"4111 Laconia Avenue,NY","40.8875, -73.8475",40.8875,-73.8475
+47th Precinct ,4111 Laconia Avenue,NY,"4111 Laconia Avenue,NY","40.8875027, -73.8475126",40.8875027,-73.8475126
 48th Precinct ,450 Cross Bronx Expressway,NY,"450 Cross Bronx Expressway,NY","40.8440139194631, -73.8977743288591",40.84401392,-73.89777433
 49th Precinct ,2121 Eastchester Road,NY,"2121 Eastchester Road,NY","40.8561111, -73.8444444",40.8561111,-73.8444444
 50th Precinct ,3450 Kingsbridge Avenue,NY,"3450 Kingsbridge Avenue,NY","40.8834823, -73.9024171571108",40.8834823,-73.90241716
@@ -61,7 +61,7 @@ Central Park Pct,86th St & Transverse Road ,NY,"86th St & Transverse Road ,NY","
 102nd Precinct ,87-34 118th Street,NY,"87-34 118th Street,NY","40.681996, -73.8230729",40.681996,-73.8230729
 103rd Precinct ,168-02 P.O Edward Byrne Ave.,NY,"168-02 P.O Edward Byrne Ave.,NY","40.7127837,-74.0059413",40.7127837,-74.0059413
 104th Precinct ,64-2 Catalpa Avenue,NY,"64-2 Catalpa Avenue,NY","40.704401, -73.8939169",40.704401,-73.8939169
-105th Precinct ,92-08 222nd Street,NY,"92-08 222nd Street,NY","40.72617005, -73.7351285065532",40.72617005,-73.73512851
+105th Precinct ,92-08 222nd Street,NY,"92-08 222nd Street,NY","40.7262082, -73.7351642",40.7262082,-73.7351642
 106th Precinct ,103-53 101st Street,NY,"103-53 101st Street,NY","40.6821986, -73.83974935",40.6821986,-73.83974935
 107th Precinct ,71-01 Parsons Boulevard,NY,"71-01 Parsons Boulevard,NY","40.7299492, -73.8106266392309",40.7299492,-73.81062664
 108th Precinct ,5-47 50th Avenue,NY,"5-47 50th Avenue,NY","40.74303995, -73.9547438432895",40.74303995,-73.95474384
@@ -73,6 +73,6 @@ Central Park Pct,86th St & Transverse Road ,NY,"86th St & Transverse Road ,NY","
 114th Precinct ,34-16 Astoria Boulevard,NY,"34-16 Astoria Boulevard,NY","40.77136, -73.9228591",40.77136,-73.9228591
 115th Precinct ,92-15 Northern Boulevard,NY,"92-15 Northern Boulevard,NY","40.7568436, -73.8755321118427",40.7568436,-73.87553211
 120th Precinct ,78 Richmond Terrace,NY,"78 Richmond Terrace,NY","40.64464375, -74.0774174344444",40.64464375,-74.07741743
-121st Precinct ,970 Richmond Avenue,NY,"970 Richmond Avenue,NY","43.050214, -76.1730099",43.050214,-76.1730099
+121st Precinct ,970 Richmond Avenue,NY,"970 Richmond Avenue,NY","40.6254220, -74.1485969",40.6254220,-74.1485969
 122nd Precinct ,2320 Hylan Boulevard,NY,"2320 Hylan Boulevard,NY","40.574106, -74.1055193107062",40.574106,-74.10551931
-123rd Precinct ,116 Main Street,NY,"116 Main Street,NY","41.03874185, -73.8664547",41.03874185,-73.8664547
+123rd Precinct ,116 Main Street,NY,"116 Main Street,NY","40.7624715, -73.8316443",40.7624715,-73.8316443
