@@ -1,0 +1,89 @@
+---
+title: "Circos Graphs for the 5 Counties in NYC"
+author: "Yaran Fan"
+date: "March 22, 2016"
+output: html_document
+---
+
+```{r, include = FALSE}
+if (!require("circlize")) install.packages("circlize")
+library("circlize")
+library("RColorBrewer")
+
+setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analysis and Visualization/HW3")
+
+
+# Read in all files
+  # Age and Gender
+  age_gender = read.csv("Data/NYC_age_gender.csv", row.names=1)
+  
+  # Education
+  education = read.csv("Data/NYC_education.csv", row.names=1)
+  
+  # Income
+  income = read.csv("Data/NYC_income.csv", row.names=1)
+  
+  # Race
+  race = read.csv("Data/NYC_race.csv", row.names=1)
+  
+  # Cash rent
+  rent_cash = read.csv("Data/NYC_rent.csv", row.names=1)
+
+```
+
+###Age and Gender
+```{r,echo=FALSE, fig.width=6, fig.height=6}  
+# Plot
+  # Age and Gender
+  data = as.matrix(age_gender)
+  c11 = brewer.pal(ncol(data)/2,"Blues")
+  c12 = brewer.pal(ncol(data)/2,"OrRd")
+  c2 = sample(rainbow(nrow(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c11, c12, c2)
+  chordDiagram(data, grid.col = grid.col)
+```
+
+###Education
+```{r,echo=FALSE, fig.width=6, fig.height=6}  
+  # Education
+  data = as.matrix(education)
+  c1 = rev(gray.colors(ncol(data)))
+  c2 = sample(rainbow(nrow(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+```
+
+###Income
+```{r,echo=FALSE, fig.width=6, fig.height=6}  
+  # Income
+  data = as.matrix(income)
+  c1 = rev(gray.colors(ncol(data)))
+  c2 = sample(rainbow(nrow(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+```
+
+###Race
+```{r,echo=FALSE, fig.width=6, fig.height=6}  
+  # Race
+  data = as.matrix(race)
+  c1 = rev(gray.colors(ncol(data)))
+  c2 = sample(rainbow(nrow(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+```
+
+###Cash Rent
+```{r,echo=FALSE, fig.width=6, fig.height=6}  
+  # Cash rent
+  data = as.matrix(rent_cash)
+  c1 = rev(gray.colors(ncol(data)))
+  c2 = sample(rainbow(nrow(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+  
