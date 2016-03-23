@@ -33,12 +33,16 @@ setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analys
 
 ###Age and Gender
 ```{r,echo=FALSE, fig.width=6, fig.height=6}  
-# Plot
+  # county colors
+  c2 = c("#8dd03d", "#6b62f2", "#41bbf2", "#efbd26", "#f95959")
+  
   # Age and Gender
   data = as.matrix(age_gender)
-  c11 = brewer.pal(ncol(data)/2,"Blues")
-  c12 = brewer.pal(ncol(data)/2,"OrRd")
-  c2 = sample(rainbow(nrow(data)))
+  colnames(data) = sub("X_","",colnames(data))
+  colnames(data) = sub(".1",".",colnames(data))
+  colnames(data) = sub("plus","+",colnames(data))
+  c11 = brewer.pal(9,"Blues")[2:9]
+  c12 = brewer.pal(9,"OrRd")[2:9]
   grid.col = NULL
   grid.col[c(colnames(data),rownames(data))] = c(c11, c12, c2)
   chordDiagram(data, grid.col = grid.col)
@@ -48,8 +52,9 @@ setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analys
 ```{r,echo=FALSE, fig.width=6, fig.height=6}  
   # Education
   data = as.matrix(education)
+  colnames(data) = sub("Less_than_","<",colnames(data))
+  colnames(data) = sub("_to_","-",colnames(data))
   c1 = rev(gray.colors(ncol(data)))
-  c2 = sample(rainbow(nrow(data)))
   grid.col = NULL
   grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
   chordDiagram(data, grid.col = grid.col)
@@ -59,8 +64,11 @@ setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analys
 ```{r,echo=FALSE, fig.width=6, fig.height=6}  
   # Income
   data = as.matrix(income)
+  colnames(data) = sub("USD_","$",colnames(data))
+  colnames(data) = sub("_to_","-$",colnames(data))
+  colnames(data) = sub("Less_than_","<$",colnames(data))
+  colnames(data) = sub("Over_200K","$200K+",colnames(data))
   c1 = rev(gray.colors(ncol(data)))
-  c2 = sample(rainbow(nrow(data)))
   grid.col = NULL
   grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
   chordDiagram(data, grid.col = grid.col)
@@ -70,8 +78,8 @@ setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analys
 ```{r,echo=FALSE, fig.width=6, fig.height=6}  
   # Race
   data = as.matrix(race)
+  colnames(data) = sub("X_2._","2+ ",colnames(data))
   c1 = rev(gray.colors(ncol(data)))
-  c2 = sample(rainbow(nrow(data)))
   grid.col = NULL
   grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
   chordDiagram(data, grid.col = grid.col)
@@ -81,9 +89,12 @@ setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analys
 ```{r,echo=FALSE, fig.width=6, fig.height=6}  
   # Cash rent
   data = as.matrix(rent_cash)
+  colnames(data) = sub("USD_","$",colnames(data))
+  colnames(data) = sub("_to_","-$",colnames(data))
+  colnames(data) = sub("Less_than_","<$",colnames(data))
+  colnames(data) = sub("_or_more","+",colnames(data))
   c1 = rev(gray.colors(ncol(data)))
-  c2 = sample(rainbow(nrow(data)))
   grid.col = NULL
   grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
   chordDiagram(data, grid.col = grid.col)
-  
+```
