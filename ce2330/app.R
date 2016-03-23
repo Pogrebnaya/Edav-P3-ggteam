@@ -67,8 +67,6 @@ server <- function(input, output, session) {
   # Reactive expression to subset data
   selectedFeature <- reactive({
     selected = input$feature
-
-    # print(list(feature = namesMap[selected], name = selected))
     return(list(feature = namesMap[[selected]], name = selected))
     
   })
@@ -115,10 +113,7 @@ server <- function(input, output, session) {
       #           values = ~median_age,
       #           position = "bottomright",
       #           title = "Married") %>% %>%
-      # hideGroup("Median Age") %>%
-      # hideGroup("Married") %>%
       addLayersControl(
-        # baseGroups = c("Median Age", "Married"),
         overlayGroups = c("Parks", "Police Stations", "Restaurants", "Schools"),
         options = layersControlOptions(collapsed = FALSE)
       )
@@ -126,12 +121,10 @@ server <- function(input, output, session) {
     
   })
   observe({
-    print(selectedFeature()[["feature"]])
     feature = unlist(nycShape@data[selectedFeature()[["feature"]]])
-    print(feature)
     featureName = selectedFeature()[["name"]]
-    notSelected = names(namesMap)[!names(namesMap) %in% featureName]
-    # print(notSelected)
+    
+    # notSelected = names(namesMap)[!names(namesMap) %in% featureName]
     leafletProxy("map") %>%
       clearControls() %>%
       # hideGroup(notSelected[1]) %>%
@@ -146,15 +139,7 @@ server <- function(input, output, session) {
                 values = feature,
                 position = "bottomright",
                 title = featureName)
-      
-    # # %>%
-    #   addLegend(pal = pal(nycShape$median_age),
-    #                                               values = ~median_age,
-    #                                               position = "bottomright",
-    #                                               title = "Median Age") %>%
 
-
-      
     })
 
 }
