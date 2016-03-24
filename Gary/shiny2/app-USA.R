@@ -4,17 +4,16 @@ library(maptools)
 library(spatialEco)
 library(dplyr)
 
-nycShape = readShapePoly("cb_2014_us_state_500k/cb_2014_us_state_500k.shp")
-nycData = read.csv("s_us_selected_feature.csv")
+setwd("~/Documents/Columbia/Exploratory Data Analysis and Visualization/HW3/Edav-P3-ggteam/Gary/shiny2/")
 
+nycShape = readShapePoly("cb_2014_us_state_500k/cb_2014_us_state_500k.shp")
+nycData = read.csv("s_us_selected_feature.csv") %>% mutate(median_rent = Median_gross_rent, mean_income = Mean_income) %>%
+  select(-Median_gross_rent, -Mean_income)
 
 nycShape@data = left_join(nycShape@data, nycData, by = c("AFFGEOID" = "Id")) 
 nycShape = sp.na.omit(nycShape, col.name = "Id2", margin = 1)
 
 pal <- function(x) {colorBin("YlGnBu", x)}
-
- 
-
 
 
 namesMap = list("Median Age" = "median_age", "Married" = "married", 
@@ -32,7 +31,8 @@ ui <- bootstrapPage(
                 fixed = TRUE, draggable = TRUE,height = "100px", width =  "250px",
                 selectInput("feature", "Feature",
                             choices = names(namesMap))
-  )
+  ),
+  absolutePanel(top = 10, left = 35,headerPanel("USA Explorer"))
 )
 
 server <- function(input, output, session) {
@@ -45,10 +45,10 @@ server <- function(input, output, session) {
   
   output$map <- renderLeaflet({
     leaflet(nycShape) %>%
-    map.panTo(new L.LatLng(40.737, -73.923));
+    # map.panTo(new L.LatLng(40.737, -73.923));
     addProviderTiles("CartoDB.Positron") %>%
+      setView(lat = 40, lng =-100, zoom=4) %>%
       addLayersControl(
-        overlayGroups = c(""),
         options = layersControlOptions(collapsed = FALSE)
       )
   })
@@ -61,7 +61,7 @@ server <- function(input, output, session) {
     leafletProxy("map") %>%
       clearControls() %>%
       addPolygons(data = nycShape, color = pal(feature)(feature),stroke = TRUE, weight = 1,
-                  popup = paste(featureName,feature, sep=": "), fillOpacity = 0.7)%>%
+                  popup = ~paste(NAME, "<br>",featureName,": ",feature, sep=""), fillOpacity = 0.7)%>%
       addLegend(pal = pal(feature),
                 values = feature,
                 position = "bottomright",
