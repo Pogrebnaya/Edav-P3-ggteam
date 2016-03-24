@@ -5,7 +5,7 @@ library(spatialEco)
 library(dplyr)
 
 
-setwd("~/Documents/Columbia/Exploratory Data Analysis and Visualization/HW3/Edav-P3-ggteam/ce2330/")
+# setwd("~/Documents/Columbia/Exploratory Data Analysis and Visualization/HW3/Edav-P3-ggteam/ce2330/")
 
 
 park = read.csv("park.csv", as.is = TRUE)
@@ -59,8 +59,8 @@ ui <- bootstrapPage(
                 fixed = TRUE, draggable = TRUE,height = "100px", width =  "250px",
                 selectInput("feature", "Feature",
                             choices = names(namesMap))
-  )
-  # absolutePanel(top = 10, left = 25,headerPanel("Pressure Variation vs. Floods"))
+  ),
+  absolutePanel(top = 10, left = 35,headerPanel("NYC Explorer"))
 )
 
 server <- function(input, output, session) {
