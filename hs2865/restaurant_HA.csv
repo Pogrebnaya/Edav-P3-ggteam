@@ -1,0 +1,72 @@
+name,address,lat,lng,id,place_id,price_level
+Checkers,"79 West 125th Street, New York",40.8078565,-73.9450662,3e3812033bdc47f76100d50fd5de3cff46fc8184,ChIJ6TL8Hw32wokRhdlgpdteiqQ,1
+Wingstop,"63 West 125th Street #65, New York",40.8075367,-73.9445306,d3601860328d9bd8df1712b139aeb1ad03e30a2d,ChIJSxJu4Az2wokRQXUM5r9JjNs,1
+Dunkin' Donuts,"105 West 125th Street, New York",40.8082801,-73.9456969,8c30c8f33921672b82460aeaca8d3dfc1512abba,ChIJTzPRdhP2wokRlMIvr9-_c2Q,1
+Jimbo's Hamburger Palace,"284 Malcolm X Boulevard, New York",40.8071688,-73.9455374,37c13822e14fe9f19f55a89d26da4e60fb6d8fb5,ChIJNRgaEA32wokR-hlCdLlLw38,1
+Golden Krust,"121 West 125th Street, New York",40.8084689,-73.9464063,631b3fa0c5d9c9b54cf6092d8884c69723539c95,ChIJORxkPg32wokR5q8bQW2FLKI,1
+Burger King,"130 West 125th Street, New York",40.8081948,-73.9470404,2a7bf8c04b317130a56da3348e3510b49104ac2d,ChIJ9RuqRA32wokRweITH9WR4SE,1
+White Castle,"2094 7th Avenue, New York",40.8088787,-73.9487893,44fc0734e9948c1ea18c67679268b981cc418e7d,ChIJt-XwuhL2wokRbq9t3YhZZeU,1
+Tropical Grill,"2145 Adam Clayton Powell Junior Boulevard, New York",40.8103852,-73.9468247,bb16cda5ef19ee493389e2d04759fc93af1f025d,ChIJy9r5onL2wokR6m7q2OcJSAw,1
+Oui Oui Crepes and Pizza,"2143 Adam Clayton Powell Junior Boulevard, New York",40.8102426,-73.9469439,442606caa4e17b45e05daedd981dfad9f5473bab,ChIJE-UdjXL2wokRBW9_cyDBXdA,1
+Subway,"348 Malcolm X Boulevard, New York",40.8091809,-73.9438935,ec04a2520d5209673fba7b8a8d6f10e17382f962,ChIJZ72rMXP2wokRvoM6SEtxA9E,1
+Taco Bell,"12 East 125th Street, New York",40.8059618,-73.9417172,9afc0994b3b9a1958017c82006c6b520f4b443ce,ChIJXSKJHgb2wokRdBULjdWi3VQ,1
+Uptown Veg and Juice Bar,"14 East 125th Street, New York",40.8059272,-73.9415223,bef86c1ba8b5d3f5eaaec55f8b98b0eb63267972,ChIJzYHwHQ32wokRFLZjV2MbVO0,1
+Chung Lan Gardens,"454 Malcolm X Boulevard, New York",40.8123687,-73.9416132,56c02c90d5d0f1932572c148e7958346c50a8caa,ChIJXfUq9nP2wokRhIFabp5EDAI,1
+IHOP,"2082 Lexington Avenue, New York",40.8049543,-73.937219,7abbd7a635074d4629890f5fd4ab4f19bed90c19,ChIJEToXZgr2wokRll0fmZb5nXk,1
+Quality & Natural Food,"107 East 125th Street, New York",40.805067,-73.9383129,b97771830614e4ca913a7b4072fadd1f51118ba1,ChIJLwxCTgr2wokRuCOPZT3WxyM,1
+Dunkin' Donuts,"2083 Lexington Ave, (145 East 125th St), New York",40.804657,-73.937032,5823bd86186e283ec913e737fe533fd79f83be96,ChIJ7ZfMjuH1wokRrV0e1flaEYo,1
+Subway,"2085 Lexington Avenue, New York",40.8048468,-73.9368289,7f87e5586ed922327f72037c2c7d20d4eab9043c,ChIJXcvTZQr2wokRMFsEDJ5TcLo,1
+Golden Krust,"2085 Lexington Avenue, New York",40.8047665,-73.9368768,91c1fa91b9f555a2b07b804744430592197e16dc,ChIJXcvTZQr2wokRYbYvI8s_4lE,1
+Popeyes? Louisiana Kitchen,"103 East 125th Street, New York",40.805,-73.9384934,1722a28c75e68b1cab0c7569080db434ff6d5cdb,ChIJ77qWUQr2wokRv_Cnw-0pzmQ,1
+Jimbo's Hamburger,"124 Lexington Avenue, New York",40.8034691,-73.937885,b888683fc16bd96242569dd0cded81be61be2f7b,ChIJ84zuJQr2wokRd34kk8YFnSU,1
+Subway,"1752 Park Avenue, New York",40.8030163,-73.9411694,b3acfc40fb4216d7927e659df5e1710feb745c15,ChIJXYTfvN9YwokRYJSWrQgxFz8,1
+Andy's Restaurant,"2262 3rd Avenue, New York",40.8025719,-73.9368562,21984629e495ac807cfb1e0f02deeec275efb0d8,ChIJnUrT8An2wokR4wbwrhOwxPU,1
+Harlem Delight New,"52 East 125th Street, New York",40.8054686,-73.9406116,37ccdd9f8a93ab0cf4504c65c46cc887574c64d1,ChIJ7fV5nwv2wokRlJKY_aOWlfU,1
+Wendy's,"79 East 125th Street, New York",40.805531,-73.939411,1a1f8b4beee9845e62851ec3ef03ae9d046ee122,ChIJy2ynqQv2wokR90QM7i686Xc,1
+Dunkin' Donuts,"57 East 125th Street, New York",40.805815,-73.9400859,1874a12925f5bcb5d7120c7e561cf38d6d9d1a49,ChIJfyAOCgv2wokRR9M_6lCwL7A,1
+Lechonera La Isla,"256 East 125th Street, New York",40.8027641,-73.9340629,1ae455b43ccc81d734345bebce22bfde1049a8c8,ChIJGd3ajuH1wokR_cYkhuxNa6I,1
+Pipo's Restaurant,"166 East 118th Street #3, New York",40.7994761,-73.939854,dcae0147acd434090e43291ec0e8ce210e0d437f,ChIJ4QcXkwj2wokRdSgql6w1N9E,1
+New Hong Kong,"1907 Lexington Avenue, New York",40.8003014,-73.94019,f4d48d56093a8bb6f6b4fc9b40e663bf44bc2e18,ChIJh6IO6Aj2wokRuOIEUTc0nJc,1
+Subway,"21 East 118th Street, New York",40.8014757,-73.9440146,5ce33654adf8c3f876e6b8aceb33cab208af1066,ChIJG0S94g72wokRbCoKKuCGTrM,1
+Empire Corner II,"1415 5th Avenue, New York",40.8004487,-73.9464164,b77638a5caf7779c7f94a8e46f648592cd3b00af,ChIJLffM6g_2wokR1b5ZSkzGTr8,1
+Taco Bell,"173 East 116th Street, New York",40.7983674,-73.9405398,c5f214d50cfef3ba2590e9e2b014289ce3bf5c2c,ChIJXSKJHgb2wokRAiaJVO-emik,1
+Dunkin' Donuts,"159 E. (Lexington and 116th St), East 116th Street, New York",40.7985929,-73.940976,1507a652f0cdb8fe8bd344271019d5f009dd92ea,ChIJ56GeZAT2wokRa9zmXw6GThY,1
+Pizza Hut,"173 East 116th St #1, New York",40.7984269,-73.9405729,154884964fb7ebd0bb12cf07420171dee816f8a6,ChIJXSKJHgb2wokROmRcc2s7lww,1
+Domino's Pizza,"153 East 116th Street, New York",40.7986554,-73.9411264,0267e34dbb757bd251f58b86c34862de5d1e0789,ChIJtVYWqAj2wokRwgDGuzoGoQc,1
+Burger King,"154 East 116th Street, New York",40.7983529,-73.9414308,f00a67df056544befdda82f3e81050878baadbb7,ChIJjcDOAwb2wokRFpBCJd9Zgso,1
+Kahlua's Cafe,"2117 3rd Avenue, New York",40.7975808,-73.9400459,95dd9bd413c45a4060965d5fcf05291887364207,ChIJcZBjPAb2wokRI4w_qYAvqjU,1
+Crown Fried Chicken,"1867 Lexington Avenue, New York",40.7982949,-73.9416601,91d5206ee6c5534829c3a4c178f2b3e975b43655,ChIJ9WTSAAb2wokRZHZa7o6nI24,1
+Wendy's,"2121-, 2123 3rd Avenue, New York",40.7977174,-73.9399725,17eb44581aad796b76a302848899303630a53ea1,ChIJe4UnOwb2wokResyMJYvv5mc,1
+Subway,"201 East 116th Street, New York",40.7979771,-73.9396292,c48d733607b801ecc0d97ec02595a96d33b9c844,ChIJ12_gJQb2wokRLVw2EvNCsus,1
+Fa Xing,"2107 3rd Avenue, New York",40.7973042,-73.9401196,ab9dccb9bf81e87dad08f51317a78fa75c641a54,ChIJE21bPgb2wokRUemXc1cpb_A,1
+Sandy Restaurant,"2261 2nd Avenue, New York",40.7972301,-73.9378697,18e50004c88da0f60decc9db6eb6368f4b4d7bf5,ChIJGVPzwwf2wokR2hDmls7ZwIQ,1
+Mi Abuelita,"2270 2nd Avenue #1, New York",40.7973167,-73.9372751,a57a0fd09999783de0b9d148965cbdbe6dae4fe5,ChIJ0TJ46Af2wokRbEEVkM79144,1
+Xing Dragon,"305 East 115th Street, New York",40.7962526,-73.9377403,807064f13598b582ed60adcd30c714cf655a731e,ChIJjfVXuwf2wokRwwegBPEu3ok,1
+Oriental Palace Restaurant,"1728 Madison Avenue, New York",40.7986921,-73.945993,a4c5af0f2635529978643ebe877d680b390d9733,ChIJ8Ts4ZgX2wokRSFCQwvwUQi0,1
+Sylvia's Restaurant,"328 Malcolm X Boulevard, New York",40.8085777,-73.9444796,b4e6d34c83c05aaaa53439fc76c0a5e77bc85f00,ChIJb8Xw0wz2wokRXhp1-HSLvkI,2
+Corner Social,"321 Malcolm X Boulevard, New York",40.8086434,-73.9451464,970683c823de878467d89e6cc19eba1d218f59cb,ChIJ_TI4LA32wokR_4hB-16nbas,2
+Ginny's Supper Club,"310 Malcolm X Boulevard, New York",40.8080282,-73.9448118,f3ab7341605c97d6824fc28df55ce58833d5d55f,ChIJH-kbJw32wokR_UxCBmg1weg,2
+Chez Lucienne,"308 Malcolm X Boulevard, New York",40.8079793,-73.9449437,70d5b04e3578439446738decf788b725b82acc6c,ChIJJ8vMJg32wokRdo1-0Fk8G0M,2
+Pee Dee Steak House,"50 West 125th Street, New York",40.8070167,-73.9441431,8a765ef466be487e7640ed6b9247c553cde3975a,ChIJE4jb-gz2wokRebLvGNZlxmU,2
+Babbalucci,"331 Lenox Avenue, New York",40.8089173,-73.9449478,3fc3ee9487c25d30c60bed3cfc76cd59da893c58,ChIJKSbSKg32wokRtNVq1dEKE-8,2
+Jacob Soul Food and Salad Bar,"373 Malcolm X Blvd, Corner of 129th and Lenox Avenue, New York",40.810288,-73.943563,49ca8fedc26308b9d145e5415d91c600c364cb89,ChIJnxjnEHP2wokR-Dgf5gfBf50,2
+Applebee's,"1 West 125th Street, New York",40.806756,-73.94238,31811a147b8052bd8ebcc4d8b1d4e72a4e85a5ac,ChIJ_13NhAz2wokR_I1JShbGQRc,2
+Cheri,"231 Malcolm X Boulevard, New York",40.805699,-73.947425,93c34a179a65d93be161ca5112d3cd241407dbba,ChIJYwmfjA32wokRtF65mxsgpdU,2
+Harlem Shake,"100 West 124th Street, New York",40.8071314,-73.9463228,0ebd48b6f20857e7e93f7843142fe92a882d3def,ChIJ_Wfccg32wokR_0Yoxz3R9a0,2
+Il Caffe Latte,"189 Malcolm X Boulevard # 1, New York",40.804388,-73.948334,8d7faa22128520e42cbf709dce7b74cc9004ad25,ChIJmQZU-BH2wokR77fs9FoxIrg,2
+Barawine Harlem,"200 Malcolm X Boulevard, New York",40.8045907,-73.9474438,b0299777011cebc4983d1420b9797d8cd68f4787,ChIJ_WGAABL2wokRNthCl_PuyFc,2
+Golden Krust,"456 Malcolm X Boulevard, New York",40.8124409,-73.9415505,814a7a08676c4005fdf1dbd5f8f8264fde0e5c13,ChIJ-V1HCHT2wokREUPiwZYPl44,2
+Manna's,"54 East 125th Street, New York",40.8055085,-73.9404477,62fa07b2c94b7812ba5025238bca18fcf63e1e46,ChIJw3SPoAv2wokRXHp0X4Bqt_4,2
+Polash,"2179 3rd Avenue #1, New York",40.7996318,-73.9384924,cc5a63a27c96c4ee97597b2cf24c94be99c0ea0e,ChIJdT6sXgj2wokR8OZiKQUJN54,2
+New Ivoire Restaurant,"76 East 119th Street, New York",40.8013409,-73.9423791,ff1933f8f7775687ec89e536c8238144179a6b5a,ChIJo2Tt1g72wokRXr1DbBNZ7YA,2
+The Kiosk,"80 East 116th Street, New York",40.7992929,-73.9437585,17bbe9da10f8450d9093c6a7947d196855e9c173,ChIJ4-XSZQ_2wokR2VZKlzfz3tI,2
+Agua Fresca,"207 East 117th Street, New York",40.7985473,-73.9389015,7516dd886c2919c3c58aaa508154ad30e3b90ad4,ChIJgY-6gAj2wokRrPLhykcW67c,2
+La Preciosa,"163 East 116th Street, New York",40.7985164,-73.940866,589e286e96f74a1981869a988a7271cfefabc4c2,ChIJx0_TdQb2wokRuVmAGJARHno,2
+Sams Famous Pizzeria,"150 East 116th Street, New York",40.798417,-73.9415741,338c4e67d374f071f6e6c03a6442ca3f1a73b8e4,ChIJNx8uAQb2wokRp1Q3xuUYwGw,2
+Las Delicias Mexicanas,"2109 3rd Avenue, New York",40.797383,-73.9401537,0589fe53d80e211b3a5d3e7e458f3cf185551d1e,ChIJ085jPgb2wokRws4N0D1KUo8,2
+El Nuevo Caridad,"2257 2nd Avenue, New York",40.7969754,-73.9381273,582ac03b48c2dfee059c33d503d4d23bff3b275b,ChIJx2a7xwf2wokRUP1l79z4rnQ,2
+El Tapatio,"209 East 116th Street, New York",40.7978939,-73.9391812,8c0bd3379076813507a8f0401bfc48ab957fd2ab,ChIJb9V9Lgb2wokRhGyhWdbs9Fk,2
+Mojitos Bar & Grill,"227 East 116th Street, New York",40.7976225,-73.9387626,0fb4d5569f67ccf0352216689496c763d790696c,ChIJgRdT0gf2wokREDAJBiiXXs0,2
+Milano Pizza Shop,"2255 2nd Avenue, New York",40.7968843,-73.9382384,fbba942a36410d7a2b00429051a48c9dc87f2058,ChIJ8dFzuAf2wokRuX_Ly_NBc4A,2
+Red Rooster,"310 Malcolm X Boulevard, New York",40.8080223,-73.944821,a8a8b0ae67cf9121030f48a547dc1751bb45315c,ChIJFcYLJw32wokRnP5A9xO9JqM,3
+Ricardo Ocean Grill,"2312 2nd Avenue, New York",40.7986191,-73.936379,80f046f53f3fb29dd567a7030ace2d1d9d2ffe19,ChIJY3KCGwj2wokROjII4s2Fq6U,3
