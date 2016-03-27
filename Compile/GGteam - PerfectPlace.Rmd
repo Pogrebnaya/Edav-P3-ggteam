@@ -1,0 +1,347 @@
+---
+title: "Find a Perfect Place to Live"
+author: "GGTeam"
+date: "March 22, 2016"
+output: html_document
+---
+
+
+## Introduction
+
+[to do]
+
+[to do]
+
+[to do]
+
+<center>[![IMAGE ALT TEXT](http://img.youtube.com/vi/VGA6sB1nBUY/0.jpg)](https://www.youtube.com/watch?v=VGA6sB1nBUY "Find a Perfect Place to Live")</center>
+
+
+## Data
+
+### US Census Data
+
+[to do]
+
+[to do]
+
+
+### NYC Point Data
+
+[to do]
+
+[to do]
+
+
+
+```{r, include = FALSE}
+if (!require("circlize")) install.packages("circlize")
+if (!require("RColorBrewer")) install.packages("RColorBrewer")
+if (!require("plotly")) install.packages("plotly")
+if (!require("htmlTable")) install.packages("htmlTable")
+library("circlize")
+library("RColorBrewer")
+library("plotly")
+library(ggplot2)
+library(reshape2)
+library(plyr)
+library("htmlTable")
+
+setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analysis and Visualization/HW3/Compile")
+```
+## State Level Insights of the Unite States
+
+First of all, we would like to have a general idea about the demographic features of the United States. And then we are going to look into lower geographic levels for specific areas.
+
+
+[to do]
+
+Gary's map
+
+[to do]
+
+
+
+### Population by Gender
+
+So here we list the top 10 states' population distribution by gender.
+
+<center><img src="population_gender.png" width="800px" />  </center>
+
+From the population plot, we can see that California has a overwhelming large population. The second one is Texas, and New York has a slighly larger population than Florida. We are going to focuse on New York later for our analysis.
+
+### Age Structure
+
+We chose the two states Texas and Vermont to compare their age structure differences and try to figure out why Texas has the second most population while Vermont has the second least population. From the plot, we can clearly conclude that Texas has more percentages of people at each age group under 40 and less percentages of people at each age group above 50. This means that Vermont is more of an aging society which may not be a perfect place for young people to live in.     
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=7, fig.align='center'}
+age_us = read.csv("age_s_us.csv", header = T)
+
+age_us_state = age_us[c(44,46),c(3,7:24)]
+age_us_state = melt(age_us_state, id.vars = "state")
+for (i in 1:nrow(age_us_state)) {
+  if (age_us_state[i,1] == "Texas")
+    age_us_state[i,3] = - age_us_state[i,3]
+}
+
+ggplot(age_us_state, aes(x = variable, y = value, fill = state)) + 
+  geom_bar(data = subset(age_us_state, state == "Texas"), stat = "identity", aes(x = variable, y = value, fill = state)) + 
+  geom_bar(data = subset(age_us_state, state == "Vermont"), stat = "identity", aes(x = variable, y = value, fill = state)) + 
+  scale_y_continuous(breaks = seq(-9,9,1), labels = paste0(as.character(c(9:0,1:9)), "%")) + 
+  coord_flip() + ggtitle("Population Age Structure between Texas and Vermont") +
+  ylab("percentage") + xlab("age")
+
+```
+
+### Education and Income
+
+We want to analyze for each education level, which state will be of the highest median income. If you are of bachelor or higher degrees, your best choice is District of Columbia, which is not surprising. However, if your degree level is lower than high school, you may want to think about living in New Hampshire. If you are a high school graduate, Alaska has the highest median income for that degree. If you are of a college or associate degree, Maryland has the highest median income for you.      
+     
+<center>
+```{r, echo=FALSE}
+edu = read.csv("education_s_us.csv", header = T)
+row_id = NULL
+for(i in 14:ncol(edu)){
+  row_id = c(row_id, which(edu[,i] == max(edu[,i])))
+}
+max_income_state = as.data.frame(as.character(edu[row_id,3]))
+rownames(max_income_state) = c("overall","lower than high school","high school graduate","college or associate degree","bachelor degree","graduate or professional degree")
+colnames(max_income_state) = "highest median income state"
+htmlTable(max_income_state)
+```
+</center>
+
+Considering most of us are of bachelor or higher degees, we want to look closer to those two degrees and see the difference of median income within each state.        
+
+```{r, echo=FALSE, fig.width=9, fig.align='center'}
+edu_higher = edu[,c(3,18,19)]
+colnames(edu_higher) = c("state","bachelor","graduate or professional")
+edu_higher = melt(edu_higher, id.vars = "state")
+ggplot(data=edu_higher, aes(x=state, y=value, group=variable, color=variable)) +
+  geom_line() + geom_point() + scale_fill_discrete(name="degree") +
+  theme(legend.position="bottom") + ggtitle("Bachelor and Graduate Degree Median Income of Each State") + theme(axis.text.x=element_text(angle=45, vjust=1, hjust=1)) + 
+  ylab("median income")
+```
+
+The overall trend of median income between bachelor and graduate degree within each state is basically the same. People of graduate or professional degree have significantly higher income than people of bachelor degree. For graduate or professional degree, the top five states of highest median income are District of Columbia, New Jersey, Maryland, Virginia, and California. For bachelor degree, the top five states of highest median income are District of Columbia, New Jersey, Connecticut, Maryland, Massachusetts. Sadly, New York state is at 9th position for graduate degree and 8th position for bachelor degree.     
+
+### Marital status and Income
+
+
+We then want to analyze the marital status of four states which are two typical West Coast and East Coast States: California and New York, and two states that have the highest and lowest median income: District of Columbia and Montana. We can find out that despite of their physical distances, California and New York have very similar marital structure. Their raddar plots are almost the same. On the other hand, District of Columbia and Montana have almost the opposite marital structure. District of Columbia has an extremely high rate of never married, while Montana has a lower rate of never married but higher rate of married and divorced. So we may conclude that income may affect people's decisions about marriage.
+
+<style>
+#combined, #others {
+            text-align: center;
+
+        }
+
+        .chart {
+            background-color: #efefef;
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+
+        }
+        .chart-title {
+            margin-bottom: 2px;
+        }
+        nobr {
+        	position: relative;
+        	left: -115px;
+        }
+</style>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="RadarChart.js"></script>
+<div id="combined">
+<div class="chart">
+<h2>4 Typical US States</h2>
+<div id="chart"></div>
+</div>
+</div>
+<div id="others">
+
+</div>
+<script src="script_marital.js"></script>
+<div style="margin-bottom:30px"></div>      
+
+
+```{r, include = FALSE}
+#=============#
+# Circus Plot #
+#=============#
+
+# Read in all files
+  # Age and Gender
+  age_gender = read.csv("NYC_age_gender.csv", row.names=1)
+  
+  # Education
+  education = read.csv("NYC_education.csv", row.names=1)
+  
+  # Income
+  income = read.csv("NYC_income.csv", row.names=1)
+  
+  # Race
+  race = read.csv("NYC_race.csv", row.names=1)
+  
+  # Cash rent
+  rent_cash = read.csv("NYC_rent.csv", row.names=1)
+
+```
+
+## County Level Insights of NYC
+
+After analyzing the state level data, we are going to focus on the New York City area. Let's first take a look at the county level features.
+
+There are 5 counties in the New York City: New York County (Manhattan), Kings County (Brooklyn), Queens County (Queens), Bronx County (Bronx), Richmond County (Staten Island). To be consistent with the common knowledge, we decide to use the informal county names in the following graphs.
+
+###Cash Rent
+
+First, let's look at the key factor: rent price. As non-cash rent only represents about 5% of the total households, we only show the cash rent here.  The following circus plot is divided into two half spaces: the 5 county levels in the bottom half, and all cash rent ranges on the top half.  The band width represents the number of households falling into the corresponding category. 
+
+By looking at the bottom half, we can see the general population distribution of the NYC across the 5 counties. There are the least number of households living on the Staten Island. Brooklyn and Manhattan are the two largest counties in the NYC. It is very clear that the price about 80% of the households in Bronx has a rent less than $1,500. All the other counties tend to have more balanced distributions across the rent ranges.
+
+Then by looking at the top half, we can see that the most common rent range is $1,000-$1,499. Most of such places are in Bronx, Brooklyn and Queens. On the contrary, if we look at the $2,000+ rent range, we can see that about 2/3 of such places are in Manhattan. For the other rent ranges, there is no clear dominant county. 
+
+This shows the fact that Manhattan is a much expensive to live in. It seems that Queens also has relatively high average rent prices. One possible reason could be that there are more married couples and families with kids living in this area than nearby counties, say Brooklyn.
+
+
+<center><b>
+
+Cash Rent by County for NYC
+
+```{r,echo=FALSE, fig.width=5, fig.height=5}  
+  # Colors
+  c2 = c("#8dd03d", "#6b62f2", "#41bbf2", "#efbd26", "#f95959")
+  
+  # Cash rent
+  data = as.matrix(rent_cash)
+  colnames(data) = sub("USD_","$",colnames(data))
+  colnames(data) = sub("_to_","-$",colnames(data))
+  colnames(data) = sub("Less_than_","<$",colnames(data))
+  colnames(data) = sub("_or_more","+",colnames(data))
+  c1 = rev(gray.colors(ncol(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+```
+</b></center>
+
+
+### Demographic Features
+Second, we are going to analyze some other features in NYC using the same method. The following 4 circos plots show the different demographic features across the 5 counties.
+
+The upper-left graph shows the population compositions by gender by age. It is clearly that there generally are more female than male in the NYC. Although from the previous graph of rent we know that there are a lot of households in Manhattan, on this graph we see that Manhattan is taking a smaller portion. This is because that the first 3 graphs below are based on population. Thus, it suggest the fact that there are less people living in the same house/apartment in Manhattan than the other counties.
+
+The upper-right graph shows the education levels. Manhattan has a significantly larger portion of population with bachelor's degrees or higher. If we look at the Graduate degree category, we can see that Manhattan has more than half of the population.
+
+
+<center><b>
+
+Age by County for NYC \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Education by County for NYC
+
+```{r,echo=FALSE, fig.width=8, fig.height=4, include = FALSE}  
+  # grid
+  par(mfrow = c(1,2))
+  
+  # Age and Gender
+  data = as.matrix(age_gender)
+  colnames(data) = sub("X_","",colnames(data))
+  colnames(data) = sub(".1",".",colnames(data))
+  colnames(data) = sub("plus","+",colnames(data))
+  c11 = brewer.pal(9,"Blues")[2:9]
+  c12 = brewer.pal(9,"OrRd")[2:9]
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c11, c12, c2)
+  chordDiagram(data, grid.col = grid.col)
+
+  # Education
+  data = as.matrix(education)
+  colnames(data) = sub("Less_than_","<",colnames(data))
+  colnames(data) = sub("_to_","-",colnames(data))
+  c1 = rev(gray.colors(ncol(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+```  
+<img src="C2.jpeg" height="400px" width="800px" />
+
+Race by County for NYC \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Income by County for NYC
+
+```{r,echo=FALSE, fig.width=10, fig.height=5, include = FALSE}  
+  # grid
+  par(mfrow = c(1,2))
+  
+  # Race
+  data = as.matrix(race)
+  colnames(data) = sub("X_2._","2+ ",colnames(data))
+  c1 = rev(gray.colors(ncol(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+  
+  # Income
+  data = as.matrix(income)
+  colnames(data) = sub("USD_","$",colnames(data))
+  colnames(data) = sub("_to_","-$",colnames(data))
+  colnames(data) = sub("Less_than_","<$",colnames(data))
+  colnames(data) = sub("Over_200K","$200K+",colnames(data))
+  c1 = rev(gray.colors(ncol(data)))
+  grid.col = NULL
+  grid.col[c(colnames(data),rownames(data))] = c(c1, c2)
+  chordDiagram(data, grid.col = grid.col)
+  par(mfrow = c(1,1))
+```
+<img src="C3.jpeg" height="400px" width="800px" />
+</b></center>
+
+The lower-left graph shows the race composition. We can see that about half of the black population live in Brooklyn; about half of the Asian population live in Queens. Except for Staten Island, other counties' population distribution pattern is generally the same as the big picture.
+
+The lower-right graph is about annual income household.  Similar to the rent pattern, Manhattan tends to have higher numbers, while Bronx tends to have lower numbers.
+
+The above demographic feature summaries can be very helpful when people try to decide which area to live.  We also show such information at even lower geographic levels and on the map.
+
+### Census Tract Level Insights of NYC
+
+After state and county level, we are moving to the very zoomed-in census tract level. We also have all the demographic and economic factors available at this level. Here we only show one summary graph. Then we'll show all the detailed information on the map.
+
+The following bubble plot summarizes 4 pieces of information from the 2,101 census tracts in the NYC. The data shown here are: County Name (color), Population (size), Average Annual Income (X axis) and Median Monthly Rent (Y axis). We cut the X axis at $250,000, but we did not cut the Y axis. Because the last category of the monthly rent is "$2,800+", there are many points on the $2,800 line. We keep them there to see which areas have more expensive rents. If you'd like to ignore them, you can just zoom in or select the area that you are interested in on the graph.
+
+<center>
+```{r, echo = FALSE}
+
+#======================#
+# Census Tract Summary #
+#======================#
+
+tract = read.csv("NYC_tract.csv")
+
+cols = rev(c("#8dd03d", "#6b62f2", "#41bbf2", "#efbd26", "#f95959"))
+m = list(l = 50, r = 20, b = 50, t = 50)
+plot_ly(tract, x = Income_Avg, y = Rent_Median, hoverinfo = "text", text = paste("Rent", Rent_Median, "; Income: ", Income_Avg), mode = "markers", 
+        color = County, colors = cols, size = Population, marker = list(sizemode="area"))%>%
+  layout(title = "Average Income vs Median Rent by Census Tract by County in NYC", titlefont=list(size=20),
+         xaxis = list(title = "Average Annual Income", range = c(0,250000)), 
+         yaxis = list(title = "Median Rent"),
+         legend = list(x = 0.03, y = 1), margin = m)
+
+```
+</center>
+
+From the graph above, we can clearly see that there is a positive relationship between income and rent price. Most of the census tracts from Bronx are around the lower-left corner with both low income and low rent. On the other hand, many tracts in Manhattan and Staten Island are in the upper-right area with both high income and high rent. Census tracts from Queens and Brooklyn are mostly in the center area. Brooklyn has some census tracts on the two extremes. 
+
+## NYC Interactive Maps
+
+[to do]
+
+Carlos' Map
+
+[to do]
+
+## Summary
+
+[to do]
+
+[to do]
+
+[to do]
