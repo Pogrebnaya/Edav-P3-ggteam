@@ -73,12 +73,15 @@ Here is a map with price level of restaurants in Harlem area.
 # harlem
 map_nyc_ha <- get_googlemap(center = c(lon=-73.937571, lat=40.804670), maptype = "satellite", zoom = 15)
 ```
+
+<center>
 ```{r, message=FALSE,warning=FALSE,echo=FALSE}
 ggmap(map_nyc_ha, extent = "device") + 
   geom_jitter(data=ha_f, aes(lng, lat, color = price_level, size = 5), alpha = 0.5) +
   scale_colour_gradientn(colours = rainbow(2, start = 0.15, alpha = 0.5)) +
   labs(title = "Price level of restaurants in Harlem", color = "Price level", size = "Location")
 ```
+</center>
 
 As we can see at the map above, price level of restaurants at this area are relatively low. There is no restaurants which have price level 4. Most restaurants have price level 1. The average price level of restaurants at Harlem is `r ave_ha`.
 
@@ -88,12 +91,15 @@ Here is a map with price level of restaurants in Upper East Side area.
 # upper east
 map_nyc_ue <- get_googlemap(center = c(lon=-73.960927, lat=40.771333), maptype = "satellite", zoom = 15)
 ```
+
+<center>
 ```{r, message=FALSE,warning=FALSE,echo=FALSE}
 ggmap(map_nyc_ue, extent = "device") + 
   geom_jitter(data=ue_f, aes(lng, lat, color = price_level, size = 5), alpha = 0.5) +
   scale_colour_gradientn(colours = rainbow(3, start = 0.15, alpha = 0.5)) +
   labs(title = "Price level of restaurants in Upper East Side", color = "Price level", size = "Location")
 ```
+</center>
 
 As we can see at the map above, price level of restaurants at this area are relatively high. We can see that some restaurants have over price level 3. Even in Upper East Side area, there are some restaurants with price level 1. This is because chain restaurants such as Subway and Dunkin' Donuts are also located in Upper East Side. The average price level of restaurants at Upper East Side is `r ave_ue`.
 
