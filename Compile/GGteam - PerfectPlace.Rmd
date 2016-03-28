@@ -22,7 +22,8 @@ library("plotly")
 library("reshape2")
 library("plyr")
 library("htmlTable")
-setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analysis and Visualization/HW3/Compile")
+library("ggthemes")
+# setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analysis and Visualization/HW3/Compile")
 ```
 
 
@@ -34,8 +35,7 @@ setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analys
 
 [to do]
 
-<center>[![Alt text](Video.jpg)](https://www.youtube.com/watch?v=VGA6sB1nBUY)</center>
-
+<center><iframe width="560" height="315" align="middle" src="https://www.youtube.com/embed/VGA6sB1nBUY" frameborder="0" allowfullscreen></iframe></center>
 
 ## Data
 
@@ -90,12 +90,18 @@ for (i in 1:nrow(age_us_state)) {
     age_us_state[i,3] = - age_us_state[i,3]
 }
 
+age_us_state$variable = gsub("andover",">",gsub("under","<",gsub("to","-",gsub('(percentage|perenctage|\\.|years)', '',age_us_state$variable))))
+
+age_us_state$variable = gsub("5-9","05-09",age_us_state$variable)
+
 ggplot(age_us_state, aes(x = variable, y = value, fill = state)) + 
   geom_bar(data = subset(age_us_state, state == "Texas"), stat = "identity", aes(x = variable, y = value, fill = state)) + 
   geom_bar(data = subset(age_us_state, state == "Vermont"), stat = "identity", aes(x = variable, y = value, fill = state)) + 
   scale_y_continuous(breaks = seq(-9,9,1), labels = paste0(as.character(c(9:0,1:9)), "%")) + 
-  coord_flip() + ggtitle("Population Age Structure between Texas and Vermont") +
-  ylab("percentage") + xlab("age")
+  coord_flip() + ggtitle("Population Age Structure: Texas and Vermont") +
+  ylab("percentage") + xlab("age (years)") + 
+  theme_fivethirtyeight() + scale_fill_tableau()
+  
 
 ```
 
@@ -125,8 +131,9 @@ colnames(edu_higher) = c("state","bachelor","graduate or professional")
 edu_higher = melt(edu_higher, id.vars = "state")
 ggplot(data=edu_higher, aes(x=state, y=value, group=variable, color=variable)) +
   geom_line() + geom_point() + scale_fill_discrete(name="degree") +
-  theme(legend.position="bottom") + ggtitle("Bachelor and Graduate Degree Median Income of Each State") + theme(axis.text.x=element_text(angle=45, vjust=1, hjust=1)) + 
-  ylab("median income")
+  theme(legend.position="bottom") + ggtitle("Bachelor and Graduate Degree Median Income of Each State") + 
+  ylab("median income")+  theme_fivethirtyeight() + scale_color_fivethirtyeight() +
+  theme(axis.text.x=element_text(angle=45, vjust=1, hjust=1)) 
 ```
 
 The overall trend of median income between bachelor and graduate degree within each state is basically the same. People of graduate or professional degree have significantly higher income than people of bachelor degree. For graduate or professional degree, the top five states of highest median income are District of Columbia, New Jersey, Maryland, Virginia, and California. For bachelor degree, the top five states of highest median income are District of Columbia, New Jersey, Connecticut, Maryland, Massachusetts. Sadly, New York state is at 9th position for graduate degree and 8th position for bachelor degree.     
@@ -400,7 +407,7 @@ On the contrary, in the map on the right-hand side (Upper East Side), the price 
 
 [to do]
 
-Carlos' Map
+<iframe src="https://carlosespino11.shinyapps.io/nyc-features/" width="100%" height="600px" frameborder="0"></iframe>
 
 [to do]
 
