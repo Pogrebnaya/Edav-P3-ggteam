@@ -30,12 +30,9 @@ library("ggthemes")
 ## I. Introduction
 
 <font color="red">
+When one tries to find a house to live, there will be many things to consider. Those include everything you can think of from the basic factors like rent to the specific factors like whether there are schools near by. It will be a headache for one to start finding a house by himself and collect all those information. Thus we propose an application which will recommend a place for you based on your information. If you provide us with your information like age, race or income etc., we will recommend places where you will find people similar to you. For the application, it will be important to choose what features we will use in order to give recommendations. In this project, we are trying to find features that will be useful for the application. We will visualize and analyze those features. We will look at census data with features like race, income, age, education, etc. and also facilities information like location of police stations, schools, etc.  
 
-[to do]
 
-[to do]
-
-[to do]
 
 </font>
 
