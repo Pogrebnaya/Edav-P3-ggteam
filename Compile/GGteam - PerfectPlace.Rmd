@@ -13,6 +13,7 @@ if (!require("htmlTable")) install.packages("htmlTable")
 if (!require("ggplot2")) install.packages("ggplot2")
 if (!require("ggmap")) install.packages("ggmap")
 if (!require("gridExtra")) install.packages("gridExtra")
+if (!require("ggthemes")) install.packages("ggthemes")
 library("ggplot2")
 library("ggmap")
 library("gridExtra")
@@ -26,23 +27,27 @@ library("ggthemes")
 # setwd("C:/Users/hongzhili/Google Drive/2016 Spring/W4701 Exploratory Data Analysis and Visualization/HW3/Compile")
 ```
 
+## I. Introduction
 
-## Introduction
+<font color="red">
+
+[to do]
 
 [to do]
 
 [to do]
 
-[to do]
+</font>
+
 
 <center><iframe width="560" height="315" align="middle" src="https://www.youtube.com/embed/VGA6sB1nBUY" frameborder="0" allowfullscreen></iframe></center>
 
-## Data
+## II. Data
 
-### US Census Data Collection and Aggregation
+### 2.1. US Census Data Collection and Aggregation
 We want to discover several features that might be useful in the application of providing personalized housing recommendation. The features we want to discover are rent, race, age, education, marital status, income, employment and occupation. The data is collected from the United States Census Bureau. They are all 2010-2014 American Community Survey 5-Year Estimates. The data is collected in two geographical scope. The large scope is in the level of states and the small scope is in the level of census tract. A series of data aggragation are performed and we finally got two files one represents the features in the scope of states (whole US) and the other represents the features in the scope of census tracts (New York City). The specific measure of each feature we are using are median rent, median_age, percentage of people with a degree of high school or higher, married ratio, median_income and unemployment rate. These features will be displayed in the following interactive maps. Categorical features like race will also be discussed later. 
 
-### NYC Point Data
+### 2.2 NYC Point Data
 
 We use point data of police stations, public schools, parks, and restaurants. These data are gotten from following data sources.
 
@@ -55,20 +60,20 @@ We use point data of police stations, public schools, parks, and restaurants. Th
     * Google Places API provides places information around a designated area, so we walked through areas in New York City, and got information of restaurants and parks.
 
 
-## State Level Insights of the Unite States
+## III. State Level Insights of the Unite States
 
 First of all, we would like to have a general idea about the demographic features of the United States. And then we are going to look into lower geographic levels for specific areas.
 
 
-[to do]
+<font color="red">
 
 Gary's map
 
 [to do]
 
+</font>
 
-
-### Population by Gender
+### 3.1 Population by Gender
 
 So here we list the top 10 states' population distribution by gender.
 
@@ -76,7 +81,7 @@ So here we list the top 10 states' population distribution by gender.
 
 From the population plot, we can see that California has a overwhelming large population. The second one is Texas, and New York has a slighly larger population than Florida. We are going to focuse on New York later for our analysis.
 
-### Age Structure
+### 3.2 Age Structure
 
 We chose the two states Texas and Vermont to compare their age structure differences and try to figure out why Texas has the second most population while Vermont has the second least population. From the plot, we can clearly conclude that Texas has more percentages of people at each age group under 40 and less percentages of people at each age group above 50. This means that Vermont is more of an aging society which may not be a perfect place for young people to live in.     
 
@@ -105,7 +110,7 @@ ggplot(age_us_state, aes(x = variable, y = value, fill = state)) +
 
 ```
 
-### Education and Income
+### 3.3 Education and Income
 
 We want to analyze for each education level, which state will be of the highest median income. If you are of bachelor or higher degrees, your best choice is District of Columbia, which is not surprising. However, if your degree level is lower than high school, you may want to think about living in New Hampshire. If you are a high school graduate, Alaska has the highest median income for that degree. If you are of a college or associate degree, Maryland has the highest median income for you.      
      
@@ -138,7 +143,7 @@ ggplot(data=edu_higher, aes(x=state, y=value, group=variable, color=variable)) +
 
 The overall trend of median income between bachelor and graduate degree within each state is basically the same. People of graduate or professional degree have significantly higher income than people of bachelor degree. For graduate or professional degree, the top five states of highest median income are District of Columbia, New Jersey, Maryland, Virginia, and California. For bachelor degree, the top five states of highest median income are District of Columbia, New Jersey, Connecticut, Maryland, Massachusetts. Sadly, New York state is at 9th position for graduate degree and 8th position for bachelor degree.     
 
-### Marital status and Income
+### 3.4 Marital status and Income
 
 
 We then want to analyze the marital status of four states which are two typical West Coast and East Coast States: California and New York, and two states that have the highest and lowest median income: District of Columbia and Montana. We can find out that despite of their physical distances, California and New York have very similar marital structure. Their raddar plots are almost the same. On the other hand, District of Columbia and Montana have almost the opposite marital structure. District of Columbia has an extremely high rate of never married, while Montana has a lower rate of never married but higher rate of married and divorced. So we may conclude that income may affect people's decisions about marriage.
@@ -202,13 +207,13 @@ We then want to analyze the marital status of four states which are two typical 
 
 ```
 
-## County Level Insights of NYC
+## IV. County Level Insights of NYC
 
 After analyzing the state level data, we are going to focus on the New York City area. Let's first take a look at the county level features.
 
 There are 5 counties in the New York City: New York County (Manhattan), Kings County (Brooklyn), Queens County (Queens), Bronx County (Bronx), Richmond County (Staten Island). To be consistent with the common knowledge, we decide to use the informal county names in the following graphs.
 
-###Cash Rent
+### 4.1 Cash Rent
 
 First, let's look at the key factor: rent price. As non-cash rent only represents about 5% of the total households, we only show the cash rent here.  The following circus plot is divided into two half spaces: the 5 county levels in the bottom half, and all cash rent ranges on the top half.  The band width represents the number of households falling into the corresponding category. 
 
@@ -241,7 +246,7 @@ Cash Rent by County for NYC
 </b></center>
 
 
-### Demographic Features
+### 4.2 Demographic Features
 Second, we are going to analyze some other features in NYC using the same method. The following 4 circos plots show the different demographic features across the 5 counties.
 
 The upper-left graph shows the population compositions by gender by age. It is clearly that there generally are more female than male in the NYC. Although from the previous graph of rent we know that there are a lot of households in Manhattan, on this graph we see that Manhattan is taking a smaller portion. This is because that the first 3 graphs below are based on population. Thus, it suggest the fact that there are less people living in the same house/apartment in Manhattan than the other counties.
@@ -314,7 +319,7 @@ The lower-right graph is about annual income household.  Similar to the rent pat
 
 The above demographic feature summaries can be very helpful when people try to decide which area to live.  We also show such information at even lower geographic levels and on the map.
 
-### Census Tract Level Insights of NYC
+## V. Census Tract Level Insights of NYC
 
 After state and county level, we are moving to the very zoomed-in census tract level. We also have all the demographic and economic factors available at this level. Here we only show one summary graph. Then we'll show all the detailed information on the map.
 
@@ -343,7 +348,7 @@ plot_ly(tract, x = Income_Avg, y = Rent_Median, hoverinfo = "text", text = paste
 
 From the graph above, we can clearly see that there is a positive relationship between income and rent price. Most of the census tracts from Bronx are around the lower-left corner with both low income and low rent. On the other hand, many tracts in Manhattan and Staten Island are in the upper-right area with both high income and high rent. Census tracts from Queens and Brooklyn are mostly in the center area. Brooklyn has some census tracts on the two extremes. 
 
-## Point Data Insights of NYC
+## VI. Point Data Insights of NYC
 
 
 ```{r, include = FALSE}
@@ -403,18 +408,25 @@ On the contrary, in the map on the right-hand side (Upper East Side), the price 
 
 
 
-## NYC Interactive Maps
+## VII. NYC Interactive Maps
 
-[to do]
+<font color="red">[to do]</font>
+
 
 <iframe src="https://carlosespino11.shinyapps.io/nyc-features/" width="100%" height="600px" frameborder="0"></iframe>
 
+<font color="red">[to do]</font>
+
+
+## VIII. Summary
+
+<font color="red">
+
 [to do]
 
-## Summary
-
 [to do]
 
 [to do]
 
-[to do]
+</font>
+
